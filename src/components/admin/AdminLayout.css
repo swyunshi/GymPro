@@ -1,0 +1,205 @@
+/* AdminLayout.css — shares most styles with MemberLayout, just different accent for admin label */
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    background: var(--bg-dark);
+}
+
+.admin-sidebar {
+    width: var(--sidebar-width);
+    background: #0d0d0d;
+    border-right: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 200;
+    transition: transform 0.3s ease;
+}
+
+.admin-sidebar .sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.admin-sidebar .sidebar-logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.admin-sidebar .sidebar-logo span {
+    color: var(--accent-red);
+    font-size: 0.85rem;
+    margin-left: 6px;
+}
+
+.admin-sidebar .sidebar-close {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.admin-sidebar .sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.admin-sidebar .sidebar-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-red), #c0392b);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.admin-sidebar .sidebar-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.admin-sidebar .sidebar-role {
+    color: var(--accent-red);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-sidebar .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 12px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.admin-sidebar .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.admin-sidebar .sidebar-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+.admin-sidebar .sidebar-link.active {
+    background: rgba(231, 76, 60, 0.12);
+    color: var(--accent-red);
+}
+
+.admin-sidebar .sidebar-link svg {
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.admin-sidebar .sidebar-logout {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 26px;
+    background: none;
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.admin-sidebar .sidebar-logout:hover {
+    color: var(--danger);
+}
+
+.admin-main {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.admin-topbar {
+    height: 64px;
+    background: rgba(13, 13, 13, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.admin-topbar h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.admin-content {
+    padding: 32px;
+    flex: 1;
+}
+
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 199;
+}
+
+@media (max-width: 900px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+    }
+
+    .admin-sidebar.open {
+        transform: translateX(0);
+    }
+
+    .admin-sidebar .sidebar-close {
+        display: block;
+    }
+
+    .admin-main {
+        margin-left: 0;
+    }
+
+    .mobile-menu-btn {
+        display: block !important;
+    }
+
+    .admin-content {
+        padding: 20px 16px;
+    }
+}
